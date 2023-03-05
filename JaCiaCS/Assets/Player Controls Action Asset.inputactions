@@ -1,8 +1,8 @@
 {
-    "name": "Player Controls",
+    "name": "Player Controls Action Asset",
     "maps": [
         {
-            "name": "Action Map",
+            "name": "Player",
             "id": "25c664d6-c6f9-445d-9d5b-e3dbb6a900cf",
             "actions": [
                 {
@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Charge",
+                    "type": "Button",
+                    "id": "ccb74030-9e24-48e9-90e7-35d507b7f1ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -70,6 +79,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "0c3b5eb0-33aa-435f-ab22-5001f67b19dc",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player Controls",
+                    "action": "Charge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
