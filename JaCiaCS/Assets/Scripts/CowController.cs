@@ -9,8 +9,9 @@ public class CowController : MonoBehaviour
     public float moveForce;  // The cow's acceleration
     public float maxSpeed;  // How fast the cow can move
 
-    private Vector3 toMove;  // How far the cow will move this frame
+    private Vector3 forceDirection;  // How far the cow will move this frame
     private Rigidbody rb;  // The rigidbody physics component in the cow
+    public Camera playerCamera;
 
     private PlayerControlsActionAsset inputActionAsset;
     private InputAction movementInput;
@@ -39,11 +40,25 @@ public class CowController : MonoBehaviour
 
     void FixedUpdate()  // Fixed update should be used for physics calculations
     {
-        forceDirection += movementInput.ReadValue<Vector2>().x * GetCameraRight(playerCamera);  // Get the input direction relative to the camera direction
-        forceDirection += movementInput.ReadValue<Vector2>().y * GetCameraForward(playerCamera);
-    }    
-    
-    
+        forceDirection += movementInput.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * moveForce;  // Get the input direction relative to the camera direction
+        forceDirection += movementInput.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * moveForce;
+
+        rb.AddForce(forceDirection, ForceMode.Impulse);  // Move the cow
+        forceDirection = Vector3.zero;  // Reset force direction to zero so it can be recalculated next frame
+
+
+        if (rb.velocity.y < 0f)  // Is the cow falling
+            rb.velocity += Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;  // Makes the cow fall faster the longer it falls;
+
+
+        Vector3 horizontalVelocity = rb.velocity;  // Make a horizontal velocity variable
+        horizontalVelocity.y = 0;
+        if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)  // If the velocity is over maxSpeed squared
+            rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+    }
+
+
+
     private void OnCharge(InputAction.CallbackContext value)  // When the charge input is pressed
     {
         if(IsGrounded())  // Check if the cow is grounded
@@ -60,5 +75,21 @@ public class CowController : MonoBehaviour
             return true;  // You are grounded
         else
             return false;
+    }    
+    
+    
+    
+    private Vector3 GetCameraForward(Camera camera)
+    {
+        Vector3 forward = camera.transform.forward;
+        forward.y = 0;
+        return forward.normalized;
+    }
+
+    private Vector3 GetCameraRight(Camera camera)
+    {
+        Vector3 right = camera.transform.right;
+        right.y = 0;
+        return right.normalized;
     }
 }
