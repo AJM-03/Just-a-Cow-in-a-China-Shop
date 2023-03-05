@@ -55,6 +55,21 @@ public class CowController : MonoBehaviour
         horizontalVelocity.y = 0;
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)  // If the velocity is over maxSpeed squared
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+
+        LookAt();
+    }
+
+
+
+    private void LookAt()
+    {
+        Vector3 direction = rb.velocity;  // Looks in the direction of it's velocity
+        direction.y = 0;  // Can't rotate up and down
+
+        if (movementInput.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)  // If the player is moving
+            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        else
+            rb.angularVelocity = Vector3.zero;  // Don't keep spinning when there is no input
     }
 
 
