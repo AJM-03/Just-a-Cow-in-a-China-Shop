@@ -8,6 +8,7 @@ public class CowController : MonoBehaviour
 {
     public float moveForce;  // The cow's acceleration
     public float maxSpeed;  // How fast the cow can move
+    public float turnSpeed;  // How fast the cow rotates
 
     private Vector3 forceDirection;  // How far the cow will move this frame
     private Rigidbody rb;  // The rigidbody physics component in the cow
@@ -48,7 +49,7 @@ public class CowController : MonoBehaviour
 
 
         if (rb.velocity.y < 0f)  // Is the cow falling
-            rb.velocity += Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;  // Makes the cow fall faster the longer it falls;
+            rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;  // Makes the cow fall faster the longer it falls;
 
 
         Vector3 horizontalVelocity = rb.velocity;  // Make a horizontal velocity variable
@@ -56,18 +57,21 @@ public class CowController : MonoBehaviour
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)  // If the velocity is over maxSpeed squared
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
 
-        LookAt();
+        LookDirection();
     }
 
 
 
-    private void LookAt()
+    private void LookDirection()
     {
         Vector3 direction = rb.velocity;  // Looks in the direction of it's velocity
         direction.y = 0;  // Can't rotate up and down
 
         if (movementInput.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)  // If the player is moving
-            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        {
+            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
+        }
         else
             rb.angularVelocity = Vector3.zero;  // Don't keep spinning when there is no input
     }
