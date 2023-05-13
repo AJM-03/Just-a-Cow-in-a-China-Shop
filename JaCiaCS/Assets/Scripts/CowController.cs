@@ -6,7 +6,90 @@ using UnityEngine.InputSystem;
 
 public class CowController : MonoBehaviour
 {
-    public float moveForce;  // The cow's acceleration
+    public float speed;
+    public float strafeSpeed;
+    public float jumpForce;
+
+    private Rigidbody rb;
+    public bool isGrounded;
+    private Vector3 forceDirection;
+
+    private PlayerControlsActionAsset inputActionAsset;
+    private InputAction movementInput;
+
+
+    void Awake()  // Runs before Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();  // Creates a reference to the cow's rigidbody component
+        inputActionAsset = new PlayerControlsActionAsset();
+    }
+
+    private void OnEnable()  // When the cow object is enabled
+    {
+        inputActionAsset.Player.Charge.started += OnCharge;
+        movementInput = inputActionAsset.Player.Move;
+        inputActionAsset.Player.Enable();
+    }
+
+    private void OnDisable()  // When the cow object is disabled
+    {
+        inputActionAsset.Player.Charge.started -= OnCharge;
+        inputActionAsset.Player.Disable();
+    }
+
+
+    private void FixedUpdate()
+    {
+        forceDirection += movementInput.ReadValue<Vector2>().x * GetCameraRight(Camera.main) * strafeSpeed;  // Get the input direction relative to the camera direction
+        forceDirection += movementInput.ReadValue<Vector2>().y * GetCameraForward(Camera.main) * speed;
+        rb.AddForce(forceDirection);
+        forceDirection = Vector3.zero;
+    }
+
+
+
+    private void OnCharge(InputAction.CallbackContext value)  // When the charge input is pressed
+    {
+        if(IsGrounded())  // Check if the cow is grounded
+        {
+            // Charge here
+        }
+    }
+
+
+    private bool IsGrounded()
+    {
+        Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);  // Shoot a line downwards
+        if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))  // If the line hits something
+            return true;  // You are grounded
+        else
+            return false;
+    }
+
+
+    private Vector3 GetCameraForward(Camera camera)
+    {
+        Vector3 forward = camera.transform.forward;
+        forward.y = 0;
+        return forward.normalized;
+    }
+
+    private Vector3 GetCameraRight(Camera camera)
+    {
+        Vector3 right = camera.transform.right;
+        right.y = 0;
+        return right.normalized;
+    }
+}
+
+
+
+
+
+
+
+
+/*public float moveForce;  // The cow's acceleration
     public float maxSpeed;  // How fast the cow can move
     public float turnSpeed;  // How fast the cow rotates
 
@@ -110,5 +193,4 @@ public class CowController : MonoBehaviour
         Vector3 right = camera.transform.right;
         right.y = 0;
         return right.normalized;
-    }
-}
+    }*/
