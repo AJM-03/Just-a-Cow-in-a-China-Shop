@@ -14,27 +14,27 @@ public class CowController : MonoBehaviour
     public bool isGrounded;
     private Vector3 forceDirection;
 
-    private PlayerControlsActionAsset inputActionAsset;
+    //private PlayerControlsActionAsset inputActionAsset;
     private InputAction movementInput;
 
 
     void Awake()  // Runs before Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();  // Creates a reference to the cow's rigidbody component
-        inputActionAsset = new PlayerControlsActionAsset();
+        //inputActionAsset = new PlayerControlsActionAsset();
     }
 
     private void OnEnable()  // When the cow object is enabled
     {
-        inputActionAsset.Player.Charge.started += OnCharge;
-        movementInput = inputActionAsset.Player.Move;
-        inputActionAsset.Player.Enable();
+        //inputActionAsset.Player.Charge.started += OnCharge;
+        //movementInput = inputActionAsset.Player.Move;
+        //inputActionAsset.Player.Enable();
     }
 
     private void OnDisable()  // When the cow object is disabled
     {
-        inputActionAsset.Player.Charge.started -= OnCharge;
-        inputActionAsset.Player.Disable();
+        //inputActionAsset.Player.Charge.started -= OnCharge;
+        //inputActionAsset.Player.Disable();
     }
 
 
@@ -44,6 +44,18 @@ public class CowController : MonoBehaviour
         forceDirection += movementInput.ReadValue<Vector2>().y * GetCameraForward(Camera.main) * speed;
         rb.AddForce(forceDirection);
         forceDirection = Vector3.zero;
+
+
+    }
+
+
+
+    private void OnJump(InputAction.CallbackContext value)  // When the charge input is pressed
+    {
+        if (IsGrounded())  // Check if the cow is grounded
+        {
+            rb.AddForce(new Vector3(0, jumpForce, 0));
+        }
     }
 
 
