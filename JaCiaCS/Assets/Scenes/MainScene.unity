@@ -234,6 +234,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &605626543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
 --- !u!1 &637086282
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 589a2595e7c966449b76af107480e34d, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: a883b5e0a7dd3b24ba704a0b2d371708, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -393,24 +406,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 26dd2378-73f6-4bd5-8494-78cb63a135aa
+    m_ActionId: 55e09967-c8c1-4353-bb4f-7cfed05f85e9
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 663966244}
-        m_TargetAssemblyTypeName: CowController, Assembly-CSharp
-        m_MethodName: OnCharge
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ccb74030-9e24-48e9-90e7-35d507b7f1ae
-    m_ActionName: Player/Charge[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 663966244}
@@ -425,8 +422,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 4b2b90f2-f4f8-4a85-8c03-f3665239e998
+    m_ActionId: 97bffe06-645c-42e6-9a65-ee9bff0c7bf7
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 663966244}
+        m_TargetAssemblyTypeName: CowController, Assembly-CSharp
+        m_MethodName: OnCharge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dc6745f9-0687-405c-ab46-5ca5157f122c
+    m_ActionName: Player/Charge[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -446,7 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   strafeSpeed: 45
-  jumpForce: 0
+  jumpForce: 2500
   isGrounded: 0
 --- !u!54 &663966245
 Rigidbody:
@@ -691,6 +704,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &732374136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
 --- !u!1 &788346470
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +828,19 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 1
   m_Center: {x: 0, y: 0.0055, z: 0}
+--- !u!114 &915358896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1083,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1335872267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
+--- !u!114 &1460754290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
 --- !u!136 &1561024571
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1713,6 +1778,7 @@ GameObject:
   - component: {fileID: 1818009397}
   - component: {fileID: 8448030143572938498}
   - component: {fileID: 463996212}
+  - component: {fileID: 605626543}
   m_Layer: 3
   m_Name: leg.F.L
   m_TagString: Untagged
@@ -1732,6 +1798,7 @@ GameObject:
   - component: {fileID: 8448030143572938502}
   - component: {fileID: 8448030143572938500}
   - component: {fileID: 1187352939}
+  - component: {fileID: 1460754290}
   m_Layer: 3
   m_Name: leg.F.R
   m_TagString: Untagged
@@ -1751,6 +1818,7 @@ GameObject:
   - component: {fileID: 1788107550}
   - component: {fileID: 1788107549}
   - component: {fileID: 1561024571}
+  - component: {fileID: 1335872267}
   m_Layer: 3
   m_Name: leg.B.L
   m_TagString: Untagged
@@ -1770,6 +1838,7 @@ GameObject:
   - component: {fileID: 8448030143572938506}
   - component: {fileID: 8448030143572938504}
   - component: {fileID: 867994740}
+  - component: {fileID: 732374136}
   m_Layer: 3
   m_Name: leg.B.R
   m_TagString: Untagged
@@ -1789,6 +1858,7 @@ GameObject:
   - component: {fileID: 719096290}
   - component: {fileID: 719096289}
   - component: {fileID: 1111410792}
+  - component: {fileID: 915358896}
   m_Layer: 3
   m_Name: ear.L
   m_TagString: Untagged
@@ -1808,6 +1878,7 @@ GameObject:
   - component: {fileID: 8448030143572938510}
   - component: {fileID: 8448030143572938508}
   - component: {fileID: 8448030143572938514}
+  - component: {fileID: 8448030143572938516}
   m_Layer: 3
   m_Name: ear.R
   m_TagString: Untagged
@@ -1827,6 +1898,7 @@ GameObject:
   - component: {fileID: 8448030143572938512}
   - component: {fileID: 8448030143572938511}
   - component: {fileID: 8448030143572938513}
+  - component: {fileID: 8448030143572938515}
   m_Layer: 3
   m_Name: body
   m_TagString: Untagged
@@ -1846,6 +1918,7 @@ GameObject:
   - component: {fileID: 8448030143572938519}
   - component: {fileID: 8448030143572938518}
   - component: {fileID: 8448030143572938520}
+  - component: {fileID: 8448030143572938522}
   m_Layer: 3
   m_Name: tail.02
   m_TagString: Untagged
@@ -1881,6 +1954,7 @@ GameObject:
   - component: {fileID: 8448030143572938525}
   - component: {fileID: 8448030143572938524}
   - component: {fileID: 8448030143572938526}
+  - component: {fileID: 8448030143572938528}
   m_Layer: 3
   m_Name: tail.01
   m_TagString: Untagged
@@ -2587,6 +2661,32 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.002
   m_Center: {x: 0, y: 0.001, z: 0}
+--- !u!114 &8448030143572938515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
+--- !u!114 &8448030143572938516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
 --- !u!4 &8448030143572938517
 Transform:
   m_ObjectHideFlags: 0
@@ -2744,6 +2844,19 @@ Transform:
   m_Father: {fileID: 8448030143572938527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8448030143572938522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
 --- !u!4 &8448030143572938523
 Transform:
   m_ObjectHideFlags: 0
@@ -2902,3 +3015,16 @@ Transform:
   m_Father: {fileID: 1074029156155526313}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8448030143572938528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448030143572775739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751a0f9f6316b5f4c91e43630b2cfaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cowController: {fileID: 663966244}
