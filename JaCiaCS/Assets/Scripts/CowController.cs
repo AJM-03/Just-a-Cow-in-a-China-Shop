@@ -44,16 +44,14 @@ public class CowController : MonoBehaviour
         forceDirection += movementInput.ReadValue<Vector2>().y * GetCameraForward(Camera.main) * speed;
         rb.AddForce(forceDirection);
         forceDirection = Vector3.zero;
-
-
     }
 
 
 
     public void OnJump(InputAction.CallbackContext value)  // When the jump input is pressed
     {
-        Debug.Log(IsGrounded());
-        if (IsGrounded())  // Check if the cow is grounded
+        Debug.Log(isGrounded);
+        if (isGrounded)  // Check if the cow is grounded
         {
             rb.AddForce(new Vector3(0, jumpForce, 0));
         }
@@ -63,21 +61,21 @@ public class CowController : MonoBehaviour
 
     public void OnCharge(InputAction.CallbackContext value)  // When the charge input is pressed
     {
-        if(IsGrounded())  // Check if the cow is grounded
+        if(isGrounded)  // Check if the cow is grounded
         {
             // Charge here
         }
     }
 
 
-    private bool IsGrounded()
+    /*private bool IsGrounded()
     {
         Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);  // Shoot a line downwards
         if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))  // If the line hits something
             return true;  // You are grounded
         else
             return false;
-    }
+    }*/
 
 
     private Vector3 GetCameraForward(Camera camera)
