@@ -50,10 +50,17 @@ public class CowController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext value)  // When the jump input is pressed
     {
-        Debug.Log(isGrounded);
-        if (isGrounded)  // Check if the cow is grounded
+        if (isGrounded && value.performed)  // Check if the cow is grounded and the button is pressed down
         {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.y);
             rb.AddForce(new Vector3(0, jumpForce, 0));
+            isGrounded = false;
+        }
+
+
+        else if (!isGrounded && rb.velocity.y > 0 && value.canceled)  // IF the cow is jumping and the button is released
+        {
+            rb.velocity = new Vector3(rb.velocity.x, -10, rb.velocity.y);  // Variable jump height
         }
     }
 
@@ -63,6 +70,7 @@ public class CowController : MonoBehaviour
     {
         if(isGrounded)  // Check if the cow is grounded
         {
+            Debug.Log("Charge");
             // Charge here
         }
     }
