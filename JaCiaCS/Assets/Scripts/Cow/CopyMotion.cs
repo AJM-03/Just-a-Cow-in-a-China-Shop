@@ -12,7 +12,7 @@ public class CopyMotion : MonoBehaviour
     void Start()
     {
         cj = GetComponent<ConfigurableJoint>();
-        offset = transform.localRotation;
+        offset = transform.localRotation;  // Sets offset to the starting rotation of that joint
     }
 
     void Update()
@@ -20,6 +20,6 @@ public class CopyMotion : MonoBehaviour
         if (!inverse)
             cj.targetRotation = targetLimb.localRotation * offset;  // Sets the target rotation for the ragdoll
         else 
-            cj.targetRotation = Quaternion.Inverse(targetLimb.localRotation) * offset;  
+            cj.targetRotation = Quaternion.Inverse(targetLimb.localRotation) * offset;  // Will flip the rotation
     }
 }
