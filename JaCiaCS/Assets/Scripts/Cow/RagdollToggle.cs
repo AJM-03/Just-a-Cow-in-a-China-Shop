@@ -8,6 +8,8 @@ public class RagdollToggle : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private CowController cowController;
     [SerializeField] private Rigidbody mainRigidbody;
+    [SerializeField] private Collider mainCollider;
+    [SerializeField] private Transform bodyTransform;
 
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] colliders;
@@ -23,7 +25,7 @@ public class RagdollToggle : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             isRagdolling = !isRagdolling;
 
@@ -46,10 +48,13 @@ public class RagdollToggle : MonoBehaviour
             collider.enabled = false;
         }
 
+        mainRigidbody.transform.position = bodyTransform.position;
+
         anim.SetBool("Ragdolling", false);
         anim.enabled = true;
         cowController.enabled = true;
         mainRigidbody.isKinematic = false;
+        mainCollider.enabled = true;
     }
 
     private void EnableRagdoll()
@@ -64,9 +69,12 @@ public class RagdollToggle : MonoBehaviour
             collider.enabled = true;
         }
 
+        bodyTransform.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-10000, 10000), Random.Range(1000, 10000), Random.Range(-10000, 10000)), ForceMode.Impulse);
+
         anim.SetBool("Ragdolling", true);
         anim.enabled = false;
         cowController.enabled = false;
         mainRigidbody.isKinematic = true;
+        mainCollider.enabled = false;
     }
 }
