@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class CowLimbCollision : MonoBehaviour
 {
-    public CowController cowController;
+    [SerializeField] private CowController cowController;
+    public float minRagdollCollisionForce;
+    public float yStandingLaunch;
+    public float yRagdollLaunch;
+    public float hitDetectionRadius;
 
     private void OnCollisionEnter(Collision collision)
     {

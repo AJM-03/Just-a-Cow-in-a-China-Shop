@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RagdollToggle : MonoBehaviour
 {
+    [SerializeField] private bool toggleRagdollWithKey;
     [SerializeField] private GameObject ragdollRoot;
-    [SerializeField] private Animator anim;
+    [SerializeField] private Animator animator;
     [SerializeField] private CowController cowController;
     [SerializeField] private Rigidbody mainRigidbody;
     [SerializeField] private Collider mainCollider;
@@ -30,7 +32,7 @@ public class RagdollToggle : MonoBehaviour
             isRagdolling = !isRagdolling;
 
             if (isRagdolling)
-                EnableRagdoll();
+                EnableRagdoll(new Vector3(Random.Range(-10000, 10000), Random.Range(1000, 10000), Random.Range(-10000, 10000)));
             else
                 DisableRagdoll();
         }
@@ -50,31 +52,64 @@ public class RagdollToggle : MonoBehaviour
 
         mainRigidbody.transform.position = bodyTransform.position;
 
-        anim.SetBool("Ragdolling", false);
-        anim.enabled = true;
+        animator.SetBool("Ragdolling", false);
+        animator.enabled = true;
         cowController.enabled = true;
         mainRigidbody.isKinematic = false;
         mainCollider.enabled = true;
     }
 
-    private void EnableRagdoll()
+    private void EnableRagdoll(Vector3 forceDirection)
     {
         foreach (var rigidbody in ragdollRigidbodies)
-        {
+        {   // Enable limb rigidbodies
             rigidbody.isKinematic = false;
         }
 
         foreach (var collider in colliders)
-        {
+        {   // Enable limb colliders
             collider.enabled = true;
         }
 
-        bodyTransform.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-10000, 10000), Random.Range(1000, 10000), Random.Range(-10000, 10000)), ForceMode.Impulse);
+        // Launch in a random direction
+        bodyTransform.GetComponent<Rigidbody>().AddForce(forceDirection, ForceMode.Impulse);
 
-        anim.SetBool("Ragdolling", true);
-        anim.enabled = false;
+        animator.SetBool("Ragdolling", true);
+        animator.enabled = false;
         cowController.enabled = false;
         mainRigidbody.isKinematic = true;
         mainCollider.enabled = false;
+    }
+
+    public void ToggleRagdoll(Vector3 forceDirection, float forceMagnitude, Vector3 hitPoint)
+    {
+        Rigidbody bodyRigidbody = bodyTransform.GetComponent<Rigidbody>();
+
+        Rigidbody hitRigidbody = ragdollRigidbodies.OrderBy(rigidbody => Vector3.Distance(rigidbody.position, hitPoint)).First();
+        CowLimbCollision limb = hitRigidbody.GetComponent<CowLimbCollision>();
+        
+        Debug.Log(Vector3.Distance(hitRigidbody.position, hitPoint) * 100 + " - " + limb + " - " + limb.hitDetectionRadius);
+
+        if (limb == null || Vector3.Distance(hitRigidbody.position, hitPoint) * 100 >= limb.hitDetectionRadius)
+        {
+            hitRigidbody = bodyRigidbody;
+            limb = hitRigidbody.GetComponent<CowLimbCollision>();
+        }
+
+
+        if (forceMagnitude >= limb.minRagdollCollisionForce || isRagdolling)
+        {
+            isRagdolling = true;
+            EnableRagdoll(Vector3.zero);
+
+            if (!isRagdolling)
+                forceDirection.y = limb.yStandingLaunch * Mathf.Abs(forceMagnitude / 2000);
+            else
+                forceDirection.y = limb.yRagdollLaunch * Mathf.Abs(forceMagnitude / 2000);
+
+            hitRigidbody.AddForceAtPosition(forceDirection, hitPoint, ForceMode.Impulse);
+            if (hitRigidbody != bodyRigidbody)
+                bodyRigidbody.AddForceAtPosition(forceDirection, hitPoint, ForceMode.Impulse);
+        }
     }
 }
