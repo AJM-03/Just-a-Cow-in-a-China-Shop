@@ -387,7 +387,7 @@ Transform:
   m_GameObject: {fileID: 163059275}
   m_LocalRotation: {x: -0.0010333209, y: -0.00096345064, z: 0.6819213, w: 0.7314242}
   m_LocalPosition: {x: -0.004434149, y: 0.009035434, z: 0.007888498}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 918649676}
@@ -796,7 +796,7 @@ Transform:
   m_GameObject: {fileID: 341788041}
   m_LocalRotation: {x: -0.0010333209, y: 0.00096345064, z: -0.6819213, w: 0.7314242}
   m_LocalPosition: {x: 0.004434149, y: 0.009035434, z: 0.007888498}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 918649676}
@@ -921,14 +921,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404499947}
-  m_LocalRotation: {x: -0.00000004371139, y: 1.9106855e-15, z: 1, w: 0.00000004371139}
+  m_LocalRotation: {x: -0.92387956, y: -0, z: 0.38268343, w: 0}
   m_LocalPosition: {x: 0.0043781633, y: -0.0011854374, z: 0.005928235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 918649676}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -135, z: 180}
 --- !u!114 &404499949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,9 +957,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   m_Radius: 0.001
-  m_Height: 0.006
+  m_Height: 0.0035
   m_Direction: 1
-  m_Center: {x: -2.5489204e-16, y: 0.0075, z: -2.5273662e-17}
+  m_Center: {x: -2.5489204e-16, y: 0.0088, z: -2.5273662e-17}
 --- !u!54 &404499951
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -968,7 +968,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404499947}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -995,11 +995,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 177
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 177
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -1010,7 +1010,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 40
+    limit: 63.639004
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 1
@@ -1018,7 +1018,7 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -2344,7 +2344,7 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -3148,14 +3148,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104968717}
-  m_LocalRotation: {x: 0.00000004371139, y: -1.9106855e-15, z: 1, w: 0.00000004371139}
+  m_LocalRotation: {x: 0.92387956, y: 0, z: 0.38268343, w: 0}
   m_LocalPosition: {x: -0.0043781633, y: -0.0011854374, z: 0.005928235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 918649676}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 180}
 --- !u!114 &1104968719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3184,9 +3184,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   m_Radius: 0.001
-  m_Height: 0.006
+  m_Height: 0.0035
   m_Direction: 1
-  m_Center: {x: -2.39457e-16, y: 0.0075, z: 2.5497991e-17}
+  m_Center: {x: -2.39457e-16, y: 0.0088, z: 2.5497991e-17}
 --- !u!54 &1104968721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3195,7 +3195,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104968717}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3222,11 +3222,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 171.0137
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 171.0137
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -3237,7 +3237,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 58.098824
+    limit: 64.21201
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 1
@@ -3245,7 +3245,7 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -3352,14 +3352,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117237453}
-  m_LocalRotation: {x: 0.00000004371139, y: -1.9106855e-15, z: 1, w: 0.00000004371139}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0.92387956, w: 0}
   m_LocalPosition: {x: -0.0043781633, y: -0.0011854374, z: -0.0076842266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 918649676}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 180}
 --- !u!114 &1117237455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,9 +3388,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   m_Radius: 0.001
-  m_Height: 0.006
+  m_Height: 0.0035
   m_Direction: 1
-  m_Center: {x: -2.9432767e-16, y: 0.007500465, z: 2.8662076e-17}
+  m_Center: {x: -2.9432767e-16, y: 0.0088, z: 2.8662076e-17}
 --- !u!54 &1117237457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3399,7 +3399,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117237453}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3426,11 +3426,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 177
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 177
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -3441,7 +3441,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 40
+    limit: 57.885864
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 1
@@ -3449,7 +3449,7 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
@@ -3945,14 +3945,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467277203}
-  m_LocalRotation: {x: -0.00000004371139, y: 1.9106855e-15, z: 1, w: 0.00000004371139}
+  m_LocalRotation: {x: -0.38268343, y: -0, z: 0.92387956, w: 0}
   m_LocalPosition: {x: 0.0043781633, y: -0.0011854374, z: -0.0076842266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 918649676}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 180}
 --- !u!114 &1467277205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3981,9 +3981,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   m_Radius: 0.001
-  m_Height: 0.006
+  m_Height: 0.0035
   m_Direction: 1
-  m_Center: {x: -2.890911e-16, y: 0.007717582, z: -2.9491758e-17}
+  m_Center: {x: -2.890911e-16, y: 0.0088, z: -2.9491758e-17}
 --- !u!54 &1467277207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3992,7 +3992,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467277203}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -4019,11 +4019,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 177
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 177
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -4034,7 +4034,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 40
+    limit: 61.948307
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 1
@@ -4042,7 +4042,7 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
