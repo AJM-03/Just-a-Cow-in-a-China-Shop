@@ -85,7 +85,7 @@ public class RagdollToggle : MonoBehaviour
     {
         Rigidbody bodyRigidbody = bodyTransform.GetComponent<Rigidbody>();
 
-        Rigidbody hitRigidbody = ragdollRigidbodies.OrderBy(rigidbody => Vector3.Distance(rigidbody.position, hitPoint)).First();
+        Rigidbody hitRigidbody = FindHitLimb(hitPoint);  // Finds the closest rigidbody to the hit point
         CowLimbCollision limb = hitRigidbody.GetComponent<CowLimbCollision>();
         
         Debug.Log(Vector3.Distance(hitRigidbody.position, hitPoint) * 100 + " - " + limb + " - " + limb.hitDetectionRadius);
@@ -111,5 +111,24 @@ public class RagdollToggle : MonoBehaviour
             if (hitRigidbody != bodyRigidbody)
                 bodyRigidbody.AddForceAtPosition(forceDirection, hitPoint, ForceMode.Impulse);
         }
+    }
+
+    private Rigidbody FindHitLimb(Vector3 hitPoint)
+    {
+        Rigidbody closestRigidbody = null;
+        float closestDist = 0;
+
+        foreach (var rigidbody in ragdollRigidbodies)  // For every rigidbody in the cow
+        {
+            float dist = Vector3.Distance(rigidbody.position, hitPoint);  // Get the distance from the hit point
+
+            if (closestRigidbody == null || dist < closestDist)  // If this rigidbody is closer
+            {
+                closestDist = dist;
+                closestRigidbody = rigidbody;
+            }
+        }
+
+        return closestRigidbody;
     }
 }
